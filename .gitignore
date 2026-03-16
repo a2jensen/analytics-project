@@ -1,0 +1,16 @@
+# Dependencies
+vendor/
+
+# Exports
+exports/
+
+# Environment / secrets
+.env
+api/db.php
+
+# Claude Code
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db

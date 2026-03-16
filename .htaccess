@@ -1,0 +1,12 @@
+# URL Rewriting
+RewriteEngine On
+
+# API routes → existing router (unchanged)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ /api/router.php [QSA,L]
+
+# App routes → front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php [QSA,L]
