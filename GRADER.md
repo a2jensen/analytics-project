@@ -67,20 +67,19 @@
 
 1. **No CSRF tokens on forms** - Forms (login, user CRUD, report save) do not have CSRF protection yet. Low risk since the app is session-based and not handling sensitive financial data, but it's a gap and something we should consider if we need this application to scale.
 
-2. **Hardcoded DB credentials** - `api/db.php` has the database password in plain text. Plan to move to `.env` file exists in `PLAN_ENV_CONFIG.md` but is not yet implemented. This should not occur in a production release but is acceptable for this class project scope.
+2. **Test Users And Weak Passwords** - We added the test users with weak passwords for ease of use of signing in. If this were to be actually deployed we would ensure that there would be no users with weak passwords remaining.
 
-3. **Test Users And Weak Passwords** - We added the test users with weak passwords for ease of use of signing in. If this were to be actually deployed we would ensure that there would be no users with weak passwords remaining.
+3. **Scalability Issues** - We added pagination and rate limiting on the login page but we do wonder what other features or changes we have to make to the architecture if this application were to scale. Still not fully sure here.
 
+4. ***Auto Generated Analysts** - We implemented auto generated comments but I do not know how much useful it would be to a user. We wanted to play around with added this functionality though and give the analyst something to start off with which we think helps in that area.
 
 ---
 
 ## Extra Credit / Expanded Features
 
-- **Rate Limiting** — IP-based rate limiting on login (5 attempts / 15 min) and API endpoints (100 req / min). Uses a `rate_limits` MySQL table, no Redis needed.
+- **Rate Limiting** — IP-based rate limiting on login (5 attempts / 15 min) and API endpoints (100 req / min). Uses a `rate_limits` MySQL table.
 - **User Signup** — Public registration at `/signup`. New accounts default to `viewer` role. Password hashed with bcrypt, validated (8+ chars).
-- **PDF Export with Embedded Charts** — Export captures the Chart.js canvas as a base64 PNG via `toDataURL()` and embeds it in the PDF alongside styled data tables. Works on all report pages and saved reports.
 - **Dashboard Activity Heatmap** — Full-width stacked bar chart on `/dashboard` showing hourly activity breakdown (0–23h) by event type (click, scroll, keyboard, page_exit).
 - **Additional Charts per Report Page** — Each report page has 3 stacked charts in the sidebar: Static (network type bar, memory doughnut, CPU cores bar), Performance (session timings grouped bar, Web Vitals with threshold colors, network timing stacked bar), Activity (events by type, clicked elements horizontal bar, scroll depth quartiles).
 - **Data-Driven Analyst Commentary** — Each report page has an auto-generated "Analyst Commentary" section that interprets the actual data (dominant network type %, Web Vitals pass/fail vs Google thresholds, engagement ratios, scroll depth analysis). Not hardcoded descriptions — values update dynamically.
 - **Auto-Populated Commentary on Report Generation** — When generating a saved report, the commentary textarea is pre-filled with auto-generated insights via `CommentaryGenerator`. Analysts can edit/add their own notes before saving.
-- **Section-Aware Saved Report Charts** — Saved reports render the same purpose-built charts as the live pages (computed from snapshot data), not a generic first-numeric-column plot.

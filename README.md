@@ -1,4 +1,4 @@
-# Links
+## Links
 
 **URL:** 
 1. https://reporting.angelo-j.xyz
@@ -7,7 +7,7 @@
 4. https://angelo-j.xyz/
 5. [repo](https://github.com/a2jensen/analytics-project)
 
-# AI Usage
+## AI Usage
 We used claude code religously throughout this entire process while also referring to documentation from the course website alongside online documentation. The workflow was `1. plan mode, 2. review, 3. implement 4. test`. Within plan mode we had it refer to this file which housed the architecture context and we had the model write out a new markdown file detailing a plan on how it will implement a given feature with additional manual testing so we can also verify. We referred to the course website for ensuring we followed some of the architectural practices. In the `repo` you can find the plan markdown files in the `/plans` folder.
 
 We did not have any problems in token usage. Maybe because just in the last couple days they expanded context windows to 1 million tokens(just a hunch).
@@ -17,9 +17,13 @@ Errors found
 - UI was very poor to start. We still think the UI could be better in certain ways but the model was absolutely terrible in this regard.
 - Did not factor in strong passwords nor pagination at the start. We had to inform the model of this.
 
-Usage of Claude Code provided a lot of value.
+Usage of Claude Code provided a lot of value but we still approached its code generation with pessimism and we tried our best to match the architecuture and coding practices with whats mentioned on the course website.
 
-# Architecture
+## Future Features
+We attempted add in a session replay feature but due to time constraints we could not. Given that our architecuture leaned heavily towards the server handling most of the load there would have been additional compexity to get a dynamic feature like a replay mode added.
+
+
+## Architecture
 Our server stack is Apache + PHP. PHP runs as an Apache module.
 
 1. Apache receives the request
