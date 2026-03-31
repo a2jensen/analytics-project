@@ -2,7 +2,7 @@
 
 <h1>Activity Data</h1>
 <?php if ($_SESSION['role'] === 'super_admin' || ($_SESSION['role'] === 'analyst' && Auth::canAccessSection('activity'))): ?>
-<a href="/reports/activity/generate" class="btn">Generate Report</a>
+<a href="/reports/activity/new" class="btn">Generate Report</a>
 <button class="btn" onclick="exportWithChart('activity', null, 'activityChart')">Export</button>
 <?php endif; ?>
 <p><?= count($rows) ?> of <?= $total ?> records</p>

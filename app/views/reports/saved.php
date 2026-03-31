@@ -26,7 +26,7 @@
                     <td><?= htmlspecialchars($report['section']) ?></td>
                     <td><?= htmlspecialchars($report['created_by_username']) ?></td>
                     <td><?= htmlspecialchars($report['created_at']) ?></td>
-                    <td><a href="/reports/saved/view?id=<?= (int)$report['id'] ?>" class="btn">View</a></td>
+                    <td><a href="/reports/saved/<?= (int)$report['id'] ?>" class="btn">View</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

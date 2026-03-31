@@ -1,7 +1,7 @@
 <?php $pageTitle = 'User Management — Analytics'; require __DIR__ . '/../layout/header.php'; ?>
 
 <h1>User Management</h1>
-<a href="/users/create" class="btn">Add User</a>
+<a href="/users/new" class="btn">Add User</a>
 <p><?= count($users) ?> of <?= $total ?> users</p>
 
 <?php require __DIR__ . '/../layout/pagination.php'; ?>
@@ -27,11 +27,11 @@
                 <td><?= $u['sections'] ? htmlspecialchars($u['sections']) : '—' ?></td>
                 <td><?= htmlspecialchars($u['created_at']) ?></td>
                 <td>
-                    <a href="/users/edit?id=<?= $u['id'] ?>" class="btn">Edit</a>
+                    <a href="/users/<?= $u['id'] ?>/edit" class="btn">Edit</a>
                     <?php if ($u['username'] !== $_SESSION['user']): ?>
-                    <form method="POST" action="/users/delete" style="display:inline"
+                    <form method="POST" action="/users/<?= $u['id'] ?>" style="display:inline"
                           onsubmit="return confirm('Delete <?= htmlspecialchars($u['username']) ?>?')">
-                        <input type="hidden" name="id" value="<?= $u['id'] ?>">
+                        <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn-link" id="delete">Delete</button>
                     </form>
                     <?php endif; ?>

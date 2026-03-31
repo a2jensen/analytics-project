@@ -36,7 +36,7 @@
                 <td><?= htmlspecialchars($s['session_start']) ?></td>
                 <td><?= htmlspecialchars($s['session_end']) ?></td>
                 <td><?= $durStr ?></td>
-                <td><a href="/replay/show?session_id=<?= urlencode($s['session_id']) ?>" class="btn" style="font-size:0.8rem;padding:0.3rem 0.6rem;">Replay</a></td>
+                <td><a href="/replay/<?= urlencode($s['session_id']) ?>" class="btn" style="font-size:0.8rem;padding:0.3rem 0.6rem;">Replay</a></td>
             </tr>
         <?php endforeach; ?>
         <?php if (empty($sessions)): ?>

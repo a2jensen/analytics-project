@@ -97,9 +97,9 @@ class ReportController {
     }
 
     // Displays a single saved report — frozen table + Chart.js chart + commentary.
-    public static function view(): void {
+    public static function view(array $params = []): void {
         Auth::require();
-        $id = (int)($_GET['id'] ?? 0);
+        $id = (int)($params['id'] ?? 0);
 
         try {
             require_once __DIR__ . '/../../api/db.php';

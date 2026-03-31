@@ -45,7 +45,9 @@
         <a href="/users"<?= $navActive('/users') ?>>Users</a>
     <?php endif; ?>
 
-    <a href="/logout" class="nav-logout">Logout</a>
+    <form method="POST" action="/logout" style="display:inline">
+        <button type="submit" class="nav-logout">Logout</button>
+    </form>
 </nav>
 <?php endif; ?>
 <main>

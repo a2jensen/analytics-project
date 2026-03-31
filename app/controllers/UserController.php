@@ -69,9 +69,9 @@ class UserController {
         }
     }
 
-    public static function edit(): void {
+    public static function edit(array $params = []): void {
         Auth::requireRole('super_admin');
-        $id = (int)($_GET['id'] ?? 0);
+        $id = (int)($params['id'] ?? 0);
 
         try {
             require_once __DIR__ . '/../../api/db.php';
@@ -93,10 +93,10 @@ class UserController {
         }
     }
 
-    public static function update(): void {
+    public static function update(array $params = []): void {
         Auth::requireRole('super_admin');
 
-        $id             = (int)($_POST['id'] ?? 0);
+        $id             = (int)($params['id'] ?? 0);
         $role           = $_POST['role'] ?? '';
         $newPassword    = $_POST['password'] ?? '';
         $changePassword = isset($_POST['change_password']);
@@ -135,10 +135,10 @@ class UserController {
         }
     }
 
-    public static function destroy(): void {
+    public static function destroy(array $params = []): void {
         Auth::requireRole('super_admin');
 
-        $id = (int)($_POST['id'] ?? 0);
+        $id = (int)($params['id'] ?? 0);
 
         // Prevent self-deletion — admin cannot delete their own account
         try {

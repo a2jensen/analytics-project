@@ -24,7 +24,7 @@ class SessionReplayController {
         }
     }
 
-    public static function show(): void {
+    public static function show(array $params = []): void {
         Auth::require();
         if (!Auth::canAccessSection('activity')) {
             http_response_code(403);
@@ -32,7 +32,7 @@ class SessionReplayController {
             return;
         }
 
-        $sessionId = trim($_GET['session_id'] ?? '');
+        $sessionId = trim($params['session_id'] ?? '');
         if (empty($sessionId)) {
             header('Location: /replay');
             exit;

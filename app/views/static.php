@@ -2,7 +2,7 @@
 
 <h1>Static Data</h1>
 <?php if ($_SESSION['role'] === 'super_admin' || ($_SESSION['role'] === 'analyst' && Auth::canAccessSection('static'))): ?>
-<a href="/reports/static/generate" class="btn">Generate Report</a>
+<a href="/reports/static/new" class="btn">Generate Report</a>
 <button class="btn" onclick="exportWithChart('static', null, 'networkChart')">Export</button>
 <?php endif; ?>
 <p><?= count($rows) ?> of <?= $total ?> records</p>

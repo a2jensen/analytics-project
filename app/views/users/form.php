@@ -12,9 +12,9 @@ require __DIR__ . '/../layout/header.php';
     <p class="error"><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
 
-<form method="POST" action="<?= $isEdit ? '/users/update' : '/users/store' ?>">
+<form method="POST" action="<?= $isEdit ? '/users/' . $user['id'] : '/users' ?>">
     <?php if ($isEdit): ?>
-        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+        <input type="hidden" name="_method" value="PUT">
     <?php endif; ?>
 
     <div class="form-group">

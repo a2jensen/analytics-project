@@ -12,7 +12,7 @@ require __DIR__ . '/../layout/header.php';
     <p class="error"><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
 
-<form method="POST" action="/reports/saved/store" id="generate-report">
+<form method="POST" action="/reports/saved" id="generate-report">
     <input type="hidden" name="section" value="<?= htmlspecialchars($section) ?>">
 
     <div class="form-group">
